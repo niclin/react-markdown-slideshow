@@ -28,7 +28,13 @@ export class SlideShowButton extends Component {
 
   render() {
       return (
-        <button onClick={this._handleClick}>播放</button>
+        <button
+        className={this.props.className}
+        onClick={this._handleClick}>播放</button>
       );
   }
+}
+
+SlideShowButton.defaultProps ={
+
 }

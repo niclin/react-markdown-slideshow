@@ -47,9 +47,13 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react2.default.createElement("button", { onClick: this._handleClick }, "播放");
+      return _react2.default.createElement("button", {
+        className: this.props.className,
+        onClick: this._handleClick }, "播放");
     }
   }]);
 
   return SlideShowButton;
 }(_react.Component);
+
+SlideShowButton.defaultProps = {};
