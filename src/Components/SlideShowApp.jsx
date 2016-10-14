@@ -7,8 +7,10 @@ export class SlideShowApp extends Component {
     super(props, context);
 
     this.state = {
-
+        text: ''
     };
+
+    this._handleChange = this._handleChange.bind(this);
   }
 
   componentWillUnmount() {
@@ -19,12 +21,21 @@ export class SlideShowApp extends Component {
 
   }
 
+  _handleChange(e) {
+    this.setState({
+      text: e.target.value
+    });
+  }
+
   render() {
     return (
         <div>
           <SlideShowButton />
-          <textarea />
-          <LivePreview />
+          <textarea
+          rows="30"
+          onChange={this._handleChange}
+          />
+          <LivePreview text={this.state.text}/>
         </div>
     );
   }

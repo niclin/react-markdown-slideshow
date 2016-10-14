@@ -20,6 +20,7 @@ export class LivePreview extends Component {
   render() {
     return (
         <div>
+          {this.props.text}
         </div>
     );
   }

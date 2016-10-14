@@ -20681,7 +20681,7 @@ var LivePreview = exports.LivePreview = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react2.default.createElement("div", null);
+      return _react2.default.createElement("div", null, this.props.text);
     }
   }]);
 
@@ -20723,7 +20723,11 @@ var SlideShowApp = exports.SlideShowApp = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (SlideShowApp.__proto__ || Object.getPrototypeOf(SlideShowApp)).call(this, props, context));
 
-    _this.state = {};
+    _this.state = {
+      text: ''
+    };
+
+    _this._handleChange = _this._handleChange.bind(_this);
     return _this;
   }
 
@@ -20734,9 +20738,18 @@ var SlideShowApp = exports.SlideShowApp = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {}
   }, {
+    key: '_handleChange',
+    value: function _handleChange(e) {
+      this.setState({
+        text: e.target.value
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement("div", null, _react2.default.createElement(_SlideShowButton.SlideShowButton, null), _react2.default.createElement("textarea", null), _react2.default.createElement(_LivePreview.LivePreview, null));
+      return _react2.default.createElement("div", null, _react2.default.createElement(_SlideShowButton.SlideShowButton, null), _react2.default.createElement("textarea", {
+        rows: "30",
+        onChange: this._handleChange }), _react2.default.createElement(_LivePreview.LivePreview, { text: this.state.text }));
     }
   }]);
 
