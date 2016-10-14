@@ -31,5 +31,10 @@
   "author": "nic",
   "engines": {
     "node": "0.12.x"
-  }
+  },
+  "repository": {
+    "url": "git@github.com:niclin/react-markdown-slideshow.git",
+    "type": "git"
+  },
+  "license": "MIT"
 }
