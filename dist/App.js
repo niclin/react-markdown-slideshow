@@ -20690,7 +20690,6 @@ var LivePreview = exports.LivePreview = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(props) {
-      console.log(this.props.text);
       var html = this.converter.makeHtml(props.text);
 
       this.setState({
@@ -20762,7 +20761,8 @@ var SlideShowApp = exports.SlideShowApp = function (_Component) {
     key: '_handleChange',
     value: function _handleChange(e) {
       this.setState({
-        text: e.target.value
+        text: e.target.value,
+        canPlay: e.target.value !== ''
       });
     }
   }, {
@@ -20770,6 +20770,7 @@ var SlideShowApp = exports.SlideShowApp = function (_Component) {
     value: function render() {
       return _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col-md-6" }, _react2.default.createElement(_SlideShowButton.SlideShowButton, {
         text: this.state.text,
+        canPlay: this.state.canPlay,
         className: "btn btn-primary" }), _react2.default.createElement("textarea", {
         rows: "25",
         className: "form-control",
@@ -20822,7 +20823,14 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
     value: function componentWillUnmount() {}
   }, {
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      $(this.refs.palyback).addClass('disabled');
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.canPlay === true) $(this.refs.playback).removeClass('disabled');else $(this.refs.playback).addClass('disabled');
+    }
   }, {
     key: '_handleClick',
     value: function _handleClick(e) {
@@ -20837,6 +20845,7 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement("button", {
+        ref: "playback",
         className: this.props.className,
         onClick: this._handleClick }, "播放");
     }
@@ -20845,7 +20854,9 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
   return SlideShowButton;
 }(_react.Component);
 
-SlideShowButton.defaultProps = {};
+SlideShowButton.defaultProps = {
+  canPlay: true
+};
 },{"react":171}],175:[function(require,module,exports){
 'use strict';
 

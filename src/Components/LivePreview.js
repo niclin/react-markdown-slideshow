@@ -49,7 +49,6 @@ var LivePreview = exports.LivePreview = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(props) {
-      console.log(this.props.text);
       var html = this.converter.makeHtml(props.text);
 
       this.setState({

@@ -11,13 +11,19 @@ export class SlideShowButton extends Component {
     this._handleClick = this._handleClick.bind(this);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
+      $(this.refs.palyback).addClass('disabled');
+  }
 
-
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.canPlay === true)
+      $(this.refs.playback).removeClass('disabled');
+    else
+      $(this.refs.playback).addClass('disabled');
   }
 
   _handleClick(e) {
@@ -32,12 +38,13 @@ export class SlideShowButton extends Component {
   render() {
       return (
         <button
+        ref="playback"
         className={this.props.className}
         onClick={this._handleClick}>播放</button>
       );
   }
 }
 
-SlideShowButton.defaultProps ={
-
+SlideShowButton.defaultProps = {
+  canPlay: true
 }

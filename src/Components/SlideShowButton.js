@@ -38,7 +38,14 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
     value: function componentWillUnmount() {}
   }, {
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      $(this.refs.palyback).addClass('disabled');
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.canPlay === true) $(this.refs.playback).removeClass('disabled');else $(this.refs.playback).addClass('disabled');
+    }
   }, {
     key: '_handleClick',
     value: function _handleClick(e) {
@@ -53,6 +60,7 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement("button", {
+        ref: "playback",
         className: this.props.className,
         onClick: this._handleClick }, "播放");
     }
@@ -61,4 +69,6 @@ var SlideShowButton = exports.SlideShowButton = function (_Component) {
   return SlideShowButton;
 }(_react.Component);
 
-SlideShowButton.defaultProps = {};
+SlideShowButton.defaultProps = {
+  canPlay: true
+};

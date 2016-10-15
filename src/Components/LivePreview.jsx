@@ -24,7 +24,6 @@ export class LivePreview extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(this.props.text)
     var html = this.converter.makeHtml(props.text);
 
     this.setState({

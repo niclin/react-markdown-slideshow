@@ -23,7 +23,8 @@ export class SlideShowApp extends Component {
 
   _handleChange(e) {
     this.setState({
-      text: e.target.value
+      text: e.target.value,
+      canPlay: e.target.value !== ''
     });
   }
 
@@ -33,6 +34,7 @@ export class SlideShowApp extends Component {
           <div className="col-md-6">
             <SlideShowButton
             text={this.state.text}
+            canPlay={this.state.canPlay}
             className="btn btn-primary"/>
             <textarea
             rows="25"
@@ -50,5 +52,4 @@ export class SlideShowApp extends Component {
 }
 
 SlideShowApp.defaultProps = {
-
 }
