@@ -55,7 +55,9 @@ var SlideShowApp = exports.SlideShowApp = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col-md-6" }, _react2.default.createElement(_SlideShowButton.SlideShowButton, { className: "btn btn-primary" }), _react2.default.createElement("textarea", {
+      return _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col-md-6" }, _react2.default.createElement(_SlideShowButton.SlideShowButton, {
+        text: this.state.text,
+        className: "btn btn-primary" }), _react2.default.createElement("textarea", {
         rows: "25",
         className: "form-control",
         onChange: this._handleChange })), _react2.default.createElement("div", { className: "col-md-6" }, _react2.default.createElement(_LivePreview.LivePreview, { text: this.state.text })));

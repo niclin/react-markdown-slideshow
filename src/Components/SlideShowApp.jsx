@@ -31,7 +31,9 @@ export class SlideShowApp extends Component {
     return (
         <div className="row">
           <div className="col-md-6">
-            <SlideShowButton className="btn btn-primary"/>
+            <SlideShowButton
+            text={this.state.text}
+            className="btn btn-primary"/>
             <textarea
             rows="25"
             className="form-control"
